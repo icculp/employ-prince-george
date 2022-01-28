@@ -1,12 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  Navigation,
+  Footer,
+  Home,
+  Form,
+} from "./components";
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <Navigation />
+      <Routes>
+        {/* Routes with navbar can go in App */}
+        <Route path="/" element={<Home />} />
+        <Route path="/Form" element={<Form />} />
+      </Routes>
+      <Footer />
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );

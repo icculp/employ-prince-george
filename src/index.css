@@ -213,10 +213,10 @@ a:link {
 }
 
 /* visited link */
-a:visited {
+/* a:visited {
   color: black;
   background-color: white;
-}
+} */
 
 /* mouse over link */
 a:hover {

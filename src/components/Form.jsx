@@ -127,7 +127,7 @@ function Form() {
       <input type="text" placeholder="email@domain.com" {...register("poc_email", {required: true, pattern: /^\S+@\S+$/i})} /><br/>
       {errors.poc_email && <p class="error">Email must be formatted like email@domain.com</p>}
       <label>Phone Number</label>  
-      <input type="tel" placeholder="123-456-7890" {...register("poc_phone", {required: true, minLength: 1, maxLength: 8})} /><br/>
+      <input type="tel" placeholder="123-456-7890" {...register("poc_phone", {required: true, minLength: 9, maxLength: 10})} /><br/>
       {errors.poc_phone && <p class="error">Please check the field above</p>}
 
       <label>Business Social Media Accounts</label>

@@ -6,7 +6,7 @@ import {
 function Home() {
   return (
     <div className="Home">
-         <Form />
+        
     </div>
   );
 }

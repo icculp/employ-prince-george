@@ -16,7 +16,7 @@ function Home() {
         <h1>Assessment Tool</h1>
         <h3>In collaboration with Elevated Economic Enterprises</h3>
         <div className="intro-button">
-          <a href="/form">Add employers</a>
+          <a href="/form">Assessment Tool</a>
         </div>
         {/* <div className="company-icons">
           <span className="company-icons__item">
@@ -94,12 +94,15 @@ function Home() {
           border-radius: 20px;
           color: var(--brand-color);
           border: 1.8px solid var(--brand-color);
-          background: darkblue;
+          background: var(--color-this-blue);
           transition: all 0.5s;
         }
+        // .intro-button:hover {
+        //   background-color: black;
+        // }
         .intro-button a:hover {
-          background-color: var(--brand-color);
-          color: white;
+          background-color: white;
+          color: darkblue;
         }
 
         .company-icons {

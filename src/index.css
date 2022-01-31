@@ -45,6 +45,7 @@ body {
   --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
   --color-green: #37af65;
   --color-light-blue: rgba(47, 172, 255, 0.8);
+  --color-this-blue: rgba(25, 98, 146, 0.855);
 
 }
 
@@ -217,7 +218,7 @@ form {
 .submit-button {
   margin-top: 2.3em;
   margin-bottom: 3em;
-  background-color: var(--color-light-blue);
+  background-color: var(--color-this-blue);
 }
 .submit-button a {
   padding: 0.65em 2.6em;
@@ -259,11 +260,12 @@ a.nav-link{
 }
 a.nav-link.active{
   color: white;
-  background: lightblue;
+  background: var(--color-this-blue);
 }
 
 form {
-  height: 3500px;
+  display: inline-block;
+  padding: 50px;
 }
 
 

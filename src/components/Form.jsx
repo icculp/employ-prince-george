@@ -1,13 +1,43 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
-import { ErrorMessage } from '@hookform/error-message';
 // <input type="text" placeholder="Email" {...register("Email", {required: true, pattern: /^\S+@\S+$/i})} />
+
+
+
+
+const heroku = "postgres://moouhckqiziaiu:e333306222f0d66bc33d75c4d9b2ad91f3666e400acdb9238655bdeda4c1731a@ec2-3-212-143-188.compute-1.amazonaws.com:5432/d2sp34opj2r6ok"
 
 function Form() {
     const { register, handleSubmit, formState: { errors }, getValues, watch, reset} = useForm({mode: "onBlur",});
     const onSubmit = data => {
       console.log(data)
-      alert("Submitting...")
+      //pool.query()
+
+      alert("Submitting... If you don't see an error after clicking okay, it went through")
+        const requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        };
+        fetch('http://localhost:5000/employer/add', requestOptions)
+            .then(async response => {
+                const isJson = response.headers.get('content-type')?.includes('application/json');
+                const data = isJson && await response.json();
+      
+                // check for error response
+                if (!response.ok) {
+                    // get error message from body or default to response status
+                    const error = (data && data.message) || response.status;
+                    return Promise.reject(error);
+                }
+      
+                this.setState({ postId: data.id })
+            })
+            .catch(error => {
+                this.setState({ errorMessage: error.toString() });
+                console.error('There was an error!', error);
+            });
+  
       reset();
     }
     const MWEMappings = require('../MWEMappings.json')
@@ -60,7 +90,7 @@ function Form() {
       <input type="text" placeholder="Street" {...register("street", {required: true, maxLength: 20})} />
       {errors.street && <p class="error">Please check the field above</p>}
       <label>Suite</label>
-      <input type="Suite" placeholder="Suite" {...register("suite", {required: false, maxLength: 10})} />
+      <input type="Suite" placeholder="Suite" {...register("suite", {required: true, maxLength: 10})} />
       {errors.suite && <p class="error">Please check the field above</p>}
       <label>City</label>
       <input type="text" placeholder="City" {...register("city", {required: true, minLength: 2, maxLength: 20})} />

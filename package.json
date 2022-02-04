@@ -1,0 +1,11 @@
+{
+  "name": "Employ Prince George Assessment Tool",
+  "version": "1.0.0",
+  "description": "Employ Prince George Employer Workforce Development Assessment Tool",
+  "scripts": {
+      "client": "cd client && npm start",
+      "server": "cd server && node server.js"
+  },
+  "author": "One Candle",
+  "license": "ISC",
+}

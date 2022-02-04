@@ -4,8 +4,9 @@
   "description": "Employ Prince George Employer Workforce Development Assessment Tool",
   "scripts": {
       "client": "cd client && npm start",
-      "server": "cd server && node server.js"
+      "server": "cd server && node server.js",
+      "start": "concurrently \"npm run server\" \"npm run client\""
   },
-  "author": "One Candle",
-  "license": "ISC",
+  "author": "One Candle Development",
+  "license": "ISC"
 }

@@ -1,11 +1,6 @@
 import React from "react";
 import { useForm } from 'react-hook-form';
-// <input type="text" placeholder="Email" {...register("Email", {required: true, pattern: /^\S+@\S+$/i})} />
 
-
-
-
-const heroku = "postgres://moouhckqiziaiu:e333306222f0d66bc33d75c4d9b2ad91f3666e400acdb9238655bdeda4c1731a@ec2-3-212-143-188.compute-1.amazonaws.com:5432/d2sp34opj2r6ok"
 
 function Form() {
     const { register, handleSubmit, formState: { errors }, getValues, watch, reset} = useForm({mode: "onBlur",});
@@ -19,7 +14,7 @@ function Form() {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(data)
         };
-        fetch('http://localhost:5000/employer/add', requestOptions)
+        fetch('https://employ-prince-george.herokuapp.com/employer/add', requestOptions)
             .then(async response => {
                 const isJson = response.headers.get('content-type')?.includes('application/json');
                 const data = isJson && await response.json();

@@ -70,11 +70,15 @@ body::before {
       rgba(151, 211, 245, 0.85),
       rgba(52, 155, 224, 0.855)
     ),
-    url(https://www.prisonfellowship.org/wp-content/uploads/2018/04/Three-Resources-Every-Returning-Citizen-Needs-community.jpg);
+    url(https://spokesman-recorder.com/wp-content/uploads/2021/08/helping-hands.png);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
+/* https://spokesman-recorder.com/wp-content/uploads/2021/08/helping-hands.png
+  https://www.prisonfellowship.org/wp-content/uploads/2018/04/Three-Resources-Every-Returning-Citizen-Needs-community.jpg
+*/
 
 h1 {
   font-weight: 400;
@@ -246,8 +250,7 @@ a:link {
 
 /* mouse over link */
 a:hover {
-  font: hotpink;
-  background-color: white;
+  font: bluw;
 }
 
 /* selected link */
@@ -257,6 +260,10 @@ a:hover {
 } */
 a.nav-link{
   color: white;
+}
+a.nav-link:hover{
+  color: white;
+  background-color: var(--color-this-blue);
 }
 a.nav-link.active{
   color: white;

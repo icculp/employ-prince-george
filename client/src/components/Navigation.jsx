@@ -7,6 +7,11 @@ function Navigation() {
       <nav className="navbar navbar-expand" style={{"backgroundColor": "transparent", "color": "#0033ad"}} >
         <div className="container">
           <NavLink className="navbar-brand" to="/">
+          <img
+          src="https://www.employpg.org/wp-content/uploads/2019/12/logo-2.png"
+          className="not"
+          alt=""
+        />
             <img alt="" className="navbar-img" src='/img' />
           </NavLink>
           <div>

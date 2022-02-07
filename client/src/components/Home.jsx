@@ -8,11 +8,11 @@ function Home() {
     <div className="Home">
          <header>
       <div className="intro-logo jumbo-bg">
-      <img
+      {/* <img
           src="https://www.employpg.org/wp-content/uploads/2019/12/logo-2.png"
           className=""
           alt=""
-        />
+        /> */}
         <h1>Assessment Tool</h1>
         <h3>In collaboration with Elevated Economic Enterprises</h3>
         <div className="intro-button">
@@ -37,17 +37,18 @@ function Home() {
       <style jsx>{`
         header {
           margin-bottom: 1rem;
-          height: 100vh;
+          height: 75vh;
         }
         .intro-logo {
           display: flex;
-          position: absolute;
-          top: 5em;
+          position: relative;
+          top: 10em;
+          margin: 10px;
           bottom: 0;
           left: 0;
           right: 0;
           flex-direction: column;
-          justify-content: space-evenly;
+          justify-content: none;
           align-items: center;
           text-align: center;
         }
@@ -55,6 +56,7 @@ function Home() {
         .intro-logo h1 {
           font-size: 1.8em;
           font-weight: 900;
+          margin-bottom: 40px;
           font-family: 'Philosopher', sans-serif;
           color: var(--brand-color);
         }

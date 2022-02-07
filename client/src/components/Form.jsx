@@ -1,9 +1,14 @@
 import React from "react";
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
+// import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber } from 'react-phone-number-input'
+import PhoneInput from 'react-phone-input-2';
+import "react-phone-number-input/style.css";
+import Input from 'react-phone-number-input/input'
 
 
 function Form() {
-    const { register, handleSubmit, formState: { errors }, getValues, setValue, watch, reset} = useForm({mode: "onBlur",});
+  // const [value, setValue] = useState()
+    const { register, handleSubmit, formState: { errors }, getValues, watch, reset, control} = useForm({mode: "onBlur",});
     const onSubmit = data => {
       console.log(data)
       //pool.query()
@@ -71,7 +76,17 @@ function Form() {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <p>All fields are required. Place "na" in unknown fields.</p> <br />
+        {/* <PhoneInput inputRef={register("phoneinput")}  />
       
+        {errors.phoneinput && (
+          <p className="error-message">Invalid Phone</p>
+        )} */}
+   
+        {/* <input type="tel" placeholder="Mobile number" {...register("Mobile", {required: true, pattern: /(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, maxLength: 12})} /> */}
+
+        {errors.Mobile && <p class="error">Please check the field above</p>}
+
+
         <h2>Business Information</h2>
         <label>Business Name</label>
       <input type="text" placeholder="Business Name" {...register("business_name", {required: true, maxLength: 80})} />
@@ -95,7 +110,7 @@ function Form() {
       <input type="text" placeholder="City" {...register("city", {required: true, minLength: 2, maxLength: 20})} />
       {errors.city && <p class="error">Please check the field above</p>}
       <label>Zip</label>
-      <input type="zip" placeholder="Zip" {...register("zip", {required: true, minLength: 5, maxLength: 9})} />
+      <input type="number" placeholder="Zip" {...register("zip", {required: true, minLength: 5, maxLength: 9})} />
       {errors.zip && <p class="error">Zip must be a number betweet 5 and 9 digits</p>}
       <label>Within a municipality?</label>
       <input {...register("municipality", { required: true })} type="radio" value="Yes" /> Yes <br/>
@@ -160,7 +175,17 @@ function Form() {
       <input type="text" placeholder="email@domain.com" {...register("poc_email", {required: true, pattern: /^\S+@\S+$/i})} /><br/>
       {errors.poc_email && <p class="error">Email must be formatted like email@domain.com</p>}
       <label>Phone Number</label>  
-      <input type="tel" placeholder="123-456-7890" {...register("poc_phone", {required: true, minLength: 9, maxLength: 11})} /><br/>
+      <input type="number" placeholder="123-456-7890" {...register("poc_phone", {required: true, minLength: 9, maxLength: 11})} /><br/>
+      {/* <PhoneInput
+        name="phoneInput"
+        control={control}
+        rules={{ required: true }} />
+
+
+        {errors["phone-input"] && (
+          <p className="error-message">Invalid Phone</p>
+        )} */}
+
       {errors.poc_phone && <p class="error">Please check the field above</p>}
 
       <label>Business Social Media Accounts</label>
@@ -188,10 +213,10 @@ function Form() {
       {errors.num_locations && <p class="error">Please check the field above</p>}
       <h5>Number of Employees</h5>  
       <label>Full time</label>  
-      <input type="num" placeholder="Number of Current FT Employees" {...register("num_fulltime", {required: true, maxLength: 10})} />
+      <input type="number" placeholder="Number of Current FT Employees" {...register("num_fulltime", {required: true, maxLength: 10})} />
       {errors.num_fulltime && <p class="error">Please check the field above</p>}
       <label>Part time</label>  
-      <input type="num" placeholder="Number of Current PT Employees" {...register("num_parttime", {required: true, maxLength: 10})} />
+      <input type="number" placeholder="Number of Current PT Employees" {...register("num_parttime", {required: true, maxLength: 10})} />
       {errors.num_parttime && <p class="error">Please check the field above</p>}
       
 

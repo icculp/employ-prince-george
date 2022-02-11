@@ -104,7 +104,7 @@ function Form() {
       <input type="text" placeholder="Street" {...register("street", {required: true,  pattern: /^[a-zA-Z ]+$/, maxLength: 20})} />
       {errors.street && <p class="error">Please check the field above</p>}
       <label>Suite</label>
-      <input type="Suite" placeholder="Suite" {...register("suite", {required: true, maxLength: 10})} />
+      <input type="number" placeholder="Suite" {...register("suite", {required: true, maxLength: 10})} />
       {errors.suite && <p class="error">Please check the field above</p>}
       <label>City</label>
       <input type="text" placeholder="City" {...register("city", {required: true, minLength: 2, maxLength: 20})} />
@@ -175,7 +175,7 @@ function Form() {
       <input type="text" placeholder="email@domain.com" {...register("poc_email", {required: true, pattern: /^\S+@\S+$/i})} /><br/>
       {errors.poc_email && <p class="error">Email must be formatted like email@domain.com</p>}
       <label>Phone Number</label>  
-      <input type="number" placeholder="123-456-7890" {...register("poc_phone", {required: true, minLength: 9, maxLength: 11})} /><br/>
+      <input type="number" placeholder="123-456-7890" {...register("poc_phone", {required: true, minLength: 10, maxLength: 10})} /><br/>
       {/* <PhoneInput
         name="phoneInput"
         control={control}
@@ -274,11 +274,11 @@ function Form() {
 
       <label>Services Employer May be interested in:</label>
       <div class="threecols">
-      {
-            employer_services.map(
-              (c,i) => <label key={c}><input type="checkbox" {...register("{c}")}  />{c}</label>
-            )
-          }
+      
+            {employer_services.map(
+              (c ,i) => <label key={c}><input type="checkbox" {...register("Services")} value={c}  />{c}</label>
+            )}
+          
       
       </div>
       {errors.hire_challenge && <p class="error">Please check the field above</p>}

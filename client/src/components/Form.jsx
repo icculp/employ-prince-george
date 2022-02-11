@@ -1,9 +1,9 @@
 import React from "react";
 import { useForm, Controller } from 'react-hook-form';
 // import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber } from 'react-phone-number-input'
-import PhoneInput from 'react-phone-input-2';
-import "react-phone-number-input/style.css";
-import Input from 'react-phone-number-input/input'
+// import PhoneInput from 'react-phone-input-2';
+// import "react-phone-number-input/style.css";
+// import Input from 'react-phone-number-input/input'
 
 
 function Form() {

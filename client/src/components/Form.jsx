@@ -101,13 +101,13 @@ function Form() {
       <input type="number" placeholder="Street number" {...register("street_number", {required: true, maxLength: 10})} />
       {errors.street_number && <p class="error">Please check the field above</p>}
       <label>Street</label>
-      <input type="text" placeholder="Street" {...register("street", {required: true,  pattern: /^[a-zA-Z ]+$/, maxLength: 20})} />
+      <input type="text" placeholder="Street" {...register("street", {required: true,  pattern: /^[a-zA-Z1-9 ]+$/, maxLength: 20})} />
       {errors.street && <p class="error">Please check the field above</p>}
       <label>Suite</label>
       <input type="number" placeholder="Suite" {...register("suite", {required: true, maxLength: 10})} />
       {errors.suite && <p class="error">Please check the field above</p>}
       <label>City</label>
-      <input type="text" placeholder="City" {...register("city", {required: true, minLength: 2, maxLength: 20})} />
+      <input type="text" placeholder="City" {...register("city", {required: true, pattern: /^[a-zA-Z ]+$/, minLength: 2, maxLength: 20})} />
       {errors.city && <p class="error">Please check the field above</p>}
       <label>Zip</label>
       <input type="number" placeholder="Zip" {...register("zip", {required: true, minLength: 5, maxLength: 9})} />
@@ -122,7 +122,7 @@ function Form() {
         <option value="DC">DC</option>
         <option value="MD">MD</option>
         <option value="VA">VA</option>
-        <option value="unknown">unknown</option>
+        <option value="unknown">Unknown</option>
       </select>
       {errors.state && <p class="error">Please check the field above</p>}
       {/* {watch("state") === 'MD' && ( */}
@@ -142,9 +142,10 @@ function Form() {
 
         <br /><br />
         <h3>MD Specific Fields</h3>
-          <label>Interest in Registering with Maryland Workforce Exchange</label>
+          <label>Interested in Registering with Maryland Workforce Exchange</label>
           <input {...register("mwe_registration", { required: true })} type="radio" value="yes" /> Yes <br/>
-          <input {...register("mwe_registration", { required: true })} type="radio" value="no" /> No
+          <input {...register("mwe_registration", { required: true })} type="radio" value="no" /> No <br/>
+          <input {...register("mwe_registration", { required: true })} type="radio" value="unknown" /> Unknown
           {errors.mwe_registered && <p class="error">Please check the field above</p>}
           <br /><br />
           
@@ -159,7 +160,7 @@ function Form() {
           <label>MD Tax Assessors Office</label>
           <label>Known or verified in good standing?</label>
           <input {...register("md_assessor", { required: true })} type="radio" value="Yes" /> Yes <br />
-          <input {...register("md_assessor", { required: true })} type="radio" value="No" /> No
+          <input {...register("md_assessor", { required: true })} type="radio" value="No" /> No <br />
           {errors.md_assessor && <p class="error">Please check the field above</p>}
         {/* )} */}
 
@@ -169,7 +170,7 @@ function Form() {
       <br />
       <h5>Business Point of Contact</h5>
       <label>Name</label>  
-      <input type="text" placeholder="Name " {...register("poc_name", {required: true, maxLength: 100})} /><br />
+      <input type="text" placeholder="Name " {...register("poc_name", {required: true, pattern: /^[a-zA-Z ]+$/, maxLength: 100})} /><br />
       {errors.poc_name && <p class="error">Please check the field above</p>}
       <label>Email</label>  
       <input type="text" placeholder="email@domain.com" {...register("poc_email", {required: true, pattern: /^\S+@\S+$/i})} /><br/>
@@ -209,7 +210,7 @@ function Form() {
       {errors.business_length && <p class="error">Please check the field above</p>}
 
       <label>Number of Locations</label>  
-      <input type="num" placeholder="Number of Locations" {...register("num_locations", {required: true, maxLength: 10})} />
+      <input type="number" placeholder="Number of Locations" {...register("num_locations", {required: true, maxLength: 10})} />
       {errors.num_locations && <p class="error">Please check the field above</p>}
       <h5>Number of Employees</h5>  
       <label>Full time</label>  
@@ -266,7 +267,7 @@ function Form() {
       <input type="text" placeholder="Skills needed" {...register("hire_skills", {required: true, maxLength: 100})} />
       {errors.hire_skills && <p class="error">Please check the field above</p>}
       <label>Where does the employer currently find or look for employees?</label>
-      <input type="text" placeholder="Seeking employees at..." {...register("hire_seeking", {required: true, maxLength: 100})} />
+      <input type="text" placeholder="Seeking employees at" {...register("hire_seeking", {required: true, maxLength: 100})} />
       {errors.hire_seeking && <p class="error">Please check the field above</p>}
       <label>What is the greatest challenge the employer is currently facing?</label>
       <input type="text" placeholder="Challenges" {...register("hire_challenge", {required: true, maxLength: 100})} />
@@ -289,14 +290,17 @@ function Form() {
       <h2>Additional Notes</h2>
       <label>Are there any other employers the business would like to refer to the team?</label>
       <input type="text" placeholder="Employer referrals" {...register("referrals", {required: true, maxLength: 100})} />
+      
       <label>Is the business minority owned?</label>
-      <input type="text" placeholder="Seeking employees at..." {...register("seek", {required: true, maxLength: 100})} />
+      <input type="text" placeholder="Minority" {...register("minority", {required: true, maxLength: 100})} />
+
       <label>Does the Business need language assistance?</label>
       <select {...register("language_assistance", { required: true })}>
         <option value="Spanish">Spanish</option>
         <option value="French">French</option>
         <option value="Other">Other</option>
-        <option value="unsure">unsure</option>
+        <option value="none">No assistance needed</option>
+        <option value="unsure">Unsure</option>
       </select>
       <label>Any additional notes</label>
       <input type="text" placeholder="Additional notes" {...register("additional_notes", {required: true, maxLength: 100})} />
@@ -309,8 +313,9 @@ function Form() {
       {errors.general_input && <p style={{'color': 'red'}}>Please check the general input</p>}
       </div>
 
-
-
+      <label>Person who referred you</label>  
+      <input type="text" placeholder="Referrer " {...register("referrer", {required: true, maxLength: 100})} /><br />
+      {errors.referrer && <p class="error">Please check the field above</p>}
       <br />
       <input type="submit" class="submit-button"  />
     </form>

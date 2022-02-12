@@ -161,6 +161,7 @@ function Form() {
           <label>Known or verified in good standing?</label>
           <input {...register("md_assessor", { required: true })} type="radio" value="Yes" /> Yes <br />
           <input {...register("md_assessor", { required: true })} type="radio" value="No" /> No <br />
+          <input {...register("md_assessor", { required: true })} type="radio" value="unknown" /> Unknown
           {errors.md_assessor && <p class="error">Please check the field above</p>}
         {/* )} */}
 

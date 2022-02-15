@@ -212,14 +212,14 @@ function Form() {
       {errors.business_length && <p class="error">Please check the field above</p>}
 
       <label>Number of Locations</label>  
-      <input type="number" placeholder="Number of Locations" {...register("num_locations", {required: true, maxLength: 10})} />
+      <input type="text" placeholder="Number of Locations" {...register("num_locations", {required: true, pattern: /^[0-9naNA]+$/, maxLength: 10})} />
       {errors.num_locations && <p class="error">Please check the field above</p>}
       <h5>Number of Employees</h5>  
       <label>Full time</label>  
-      <input type="number" placeholder="Number of Current FT Employees" {...register("num_fulltime", {required: true, maxLength: 10})} />
+      <input type="text" placeholder="Number of Current FT Employees" {...register("num_fulltime", {required: true, pattern: /^[0-9naNA]+$/, maxLength: 10})} />
       {errors.num_fulltime && <p class="error">Please check the field above</p>}
       <label>Part time</label>  
-      <input type="number" placeholder="Number of Current PT Employees" {...register("num_parttime", {required: true, maxLength: 10})} />
+      <input type="text" placeholder="Number of Current PT Employees" {...register("num_parttime", {required: true, pattern: /^[0-9naNA]+$/, maxLength: 10})} />
       {errors.num_parttime && <p class="error">Please check the field above</p>}
       
 

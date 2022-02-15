@@ -102,7 +102,7 @@ function Form() {
       <input type="number" placeholder="Street number" {...register("street_number", {required: true, maxLength: 10})} />
       {errors.street_number && <p class="error">Please check the field above</p>}
       <label>Street</label>
-      <input type="text" placeholder="Street" {...register("street", {required: true,  pattern: /^[a-zA-Z1-9 ]+$/, maxLength: 20})} />
+      <input type="text" placeholder="Street" {...register("street", {required: true,  pattern: /^[a-zA-Z0-9 ]+$/, maxLength: 20})} />
       {errors.street && <p class="error">Please check the field above</p>}
       <label>Suite</label>
       <input type="text" placeholder="Suite" {...register("suite", {required: true, maxLength: 10})} />

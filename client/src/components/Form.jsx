@@ -76,7 +76,7 @@ function Form() {
 
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
-        <p>All fields are required. Place "na" in unknown fields.</p> <br />
+        <p>ALL FIELDS REQUIRE AN ENTRY.  Place "NA" in unknown fields.</p> <br />
         {/* <PhoneInput inputRef={register("phoneinput")}  />
       
         {errors.phoneinput && (
@@ -85,7 +85,7 @@ function Form() {
    
         {/* <input type="tel" placeholder="Mobile number" {...register("Mobile", {required: true, pattern: /(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, maxLength: 12})} /> */}
 
-        {errors.Mobile && <p class="error">Please check the field above</p>}
+        {/* {errors.Mobile && <p class="error">Please check the field above</p>} */}
 
 
         <h2>Business Information</h2>
@@ -102,7 +102,7 @@ function Form() {
       <input type="number" placeholder="Street number" {...register("street_number", {required: true, maxLength: 10})} />
       {errors.street_number && <p class="error">Please check the field above</p>}
       <label>Street</label>
-      <input type="text" placeholder="Street" {...register("street", {required: true,  pattern: /^[a-zA-Z0-9 ]+$/, maxLength: 20})} />
+      <input type="text" placeholder="Street" {...register("street", {required: true,  pattern: /^[a-zA-Z0-9, ]+$/, maxLength: 20})} />
       {errors.street && <p class="error">Please check the field above</p>}
       <label>Suite</label>
       <input type="text" placeholder="Suite" {...register("suite", {required: true, maxLength: 10})} />
@@ -150,7 +150,7 @@ function Form() {
           {errors.mwe_registered && <p class="error">Please check the field above</p>}
           <br /><br />
           
-          <label>Maryland Specific Employment Industry Sector Code (see code list)</label>
+          <label>Maryland Specific Employment Industry Sector Code (See code list.  If unsure, select "unknown")</label>
           <select {...register("mwe_mappings", { required: true })}>
             {MWEMappings.map((code) => {
                 return <option value={code}>{code}</option>;
@@ -178,7 +178,7 @@ function Form() {
       <input type="text" placeholder="email@domain.com" {...register("poc_email", {required: true, pattern: /^\S+@\S+$/i})} /><br/>
       {errors.poc_email && <p class="error">Email must be formatted like email@domain.com</p>}
       <label>Phone Number</label>  
-      <input type="number" placeholder="123-456-7890" {...register("poc_phone", {required: true, minLength: 10, maxLength: 10})} /><br/>
+      <input type="text" placeholder="10 digits, will accept (), -, spaces or digits. ie (123) 245-2838" {...register("poc_phone", {required: true, pattern: /^\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/, minLength: 10, maxLength: 18})} /><br/>
       {/* <PhoneInput
         name="phoneInput"
         control={control}
@@ -316,7 +316,13 @@ function Form() {
       </div>
 
       <label>Person who referred you</label>  
-      <input type="text" placeholder="Referrer " {...register("referrer", {required: true, maxLength: 100})} /><br />
+      <select {...register("referrer", { required: true })}>
+        <option value="Miranda Braatz">Miranda Braatz</option>
+        <option value="Tony Cord">Tony Cord</option>
+        <option value="Michel Daley">Michel Daley</option>
+        <option value="Other">Other</option>
+      </select>
+      {/* <input type="text" placeholder="Referrer " {...register("referrer", {required: true, maxLength: 100})} /><br /> */}
       {errors.referrer && <p class="error">Please check the field above</p>}
       <br />
       <input type="submit" class="submit-button"  />

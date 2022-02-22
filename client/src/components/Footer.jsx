@@ -6,7 +6,7 @@ function Footer() {
       <footer class=".footer-transparent">
         <div class="container">
           <p class="m-0 text-center text-white">
-            Copyright &copy; <a href="https://onecandle.dev" target="_blank">One Candle Developer</a> 2022
+            Copyright &copy; <a href="https://onecandle.dev" target="_blank">One Candle Developement</a> 2022
           </p>
         </div>
       </footer>

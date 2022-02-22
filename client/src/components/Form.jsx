@@ -41,7 +41,8 @@ function Form() {
       reset();
     }
     const MWEMappings = require('../MWEMappings.json')
-    const industry = ['Healthcare',
+    const industry = ['--Select value--',
+      'Healthcare',
       'Retail',
       'Restaurant',
       'IT',
@@ -119,7 +120,8 @@ function Form() {
       {errors.municipality && <p class="error">Please check the field above</p>}
 
       <label>State</label>
-      <select {...register("state", { required: true } )} >
+      <select {...register("state", { required: true, pattern: /^(?!--Select value--).*$/ } )} >
+        <option value="--Select value--">--Select value--</option>
         <option value="DC">DC</option>
         <option value="MD">MD</option>
         <option value="VA">VA</option>
@@ -130,12 +132,13 @@ function Form() {
 
       
         <label>Industry Sector (all states)</label>
-      <select {...register("industry_sector", { required: true })}>
+      <select {...register("industry_sector", { required: true, pattern: /^(?!--Select value--).*$/ })}>
         {industry.map((code) => {
             return <option value={code}>{code}</option>;
         })}
       </select>
       {errors.industry_sector && <p class="error">Please check the field above</p>}
+      
       <label>Have you heard about the Rapid Re-Employment Grant?</label>
       <input {...register("rrgrant", { required: true })} type="radio" value="Yes" /> Yes <br/>
       <input {...register("rrgrant", { required: true })} type="radio" value="No" /> No
@@ -151,7 +154,7 @@ function Form() {
           <br /><br />
           
           <label>Maryland Specific Employment Industry Sector Code (See code list.  If unsure, select "unknown")</label>
-          <select {...register("mwe_mappings", { required: true })}>
+          <select {...register("mwe_mappings", { required: true, pattern: /^(?!--Select value--).*$/ })}>
             {MWEMappings.map((code) => {
                 return <option value={code}>{code}</option>;
             })}
@@ -202,7 +205,8 @@ function Form() {
       <br /><br />
       <h2>Business Assessment</h2>
       <label>How long has this business been in business?</label>
-      <select {...register("business_length", { required: true })}>
+      <select {...register("business_length", { required: true, pattern: /^(?!--Select value--).*$/ })}>
+        <option value="--Select value--">--Select value--</option>
         <option value="under1">Under 1 year</option>
         <option value="1to3">1 to 3 years</option>
         <option value="1to3">3 to 5 years</option>
@@ -224,7 +228,8 @@ function Form() {
       
 
       <label>Employees Remote or On-site?</label>
-      <select {...register("business_site", { required: true })}>
+      <select {...register("business_site", { required: true, pattern: /^(?!--Select value--).*$/ })}>
+        <option value="--Select value--">--Select value--</option>
         <option value="remote">Remote</option>
         <option value="onsite">Onsite</option>
         <option value="mixed">Mixed</option>
@@ -244,7 +249,8 @@ function Form() {
       <h2>Business Employer Needs</h2>
 
       <label>How many employees is the business looking to hire?</label>
-      <select {...register("hire_quantity", { required: true })}>
+      <select {...register("hire_quantity", { required: true, pattern: /^(?!--Select value--).*$/ })}>
+        <option value="--Select value--">--Select value--</option>
         <option value="1to3">1 to 3</option>
         <option value="3to5">3 to 5</option>
         <option value="5+">5+</option>
@@ -253,7 +259,8 @@ function Form() {
       {errors.hire_quantity && <p class="error">Please check the field above</p>}
 
       <label>What is the hiring time frame?</label>
-      <select {...register("hire_timeframe", { required: true })}>
+      <select {...register("hire_timeframe", { required: true, pattern: /^(?!--Select value--).*$/ })}>
+        <option value="--Select value--">--Select value--</option>
         <option value="1to3">1 to 3 months</option>
         <option value="3to6">3 to 6 months</option>
         <option value="6to12">6 to 12 months</option>
@@ -297,13 +304,15 @@ function Form() {
       <input type="text" placeholder="Minority" {...register("minority", {required: true, maxLength: 100})} />
 
       <label>Does the Business need language assistance?</label>
-      <select {...register("language_assistance", { required: true })}>
+      <select {...register("language_assistance", { required: true, pattern: /^(?!--Select value--).*$/ })}>
+        <option value="--Select value--">--Select value--</option>
         <option value="Spanish">Spanish</option>
         <option value="French">French</option>
         <option value="Other">Other</option>
         <option value="none">No assistance needed</option>
         <option value="unsure">Unsure</option>
       </select>
+      {errors.language_assistance && <p class="error">Please check the field above</p>}
       {/* {watch("language_assistance") === 'Other' && (
         <div>
           <input type="text" placeholder="Specify language" {...register("language_assistance", {required: true, maxLength: 100})} /><br />
@@ -322,7 +331,8 @@ function Form() {
       </div>
 
       <label>Person who referred you</label>  
-      <select {...register("referrer", { required: true })}>
+      <select {...register("referrer", { required: true, pattern: /^(?!--Select value--).*$/ })}>
+        <option value="--Select value--">--Select value--</option>
         <option value="Miranda Braatz">Miranda Braatz</option>
         <option value="Tony Cord">Tony Cord</option>
         <option value="Michel Daley">Michel Daley</option>
@@ -338,7 +348,7 @@ function Form() {
 
       
       {errors.referrer && <p class="error">Please check the field above</p>}
-      <br />
+      <br /><br /><br /><br /><br />
       <input type="submit" class="submit-button"  />
     </form>
     );

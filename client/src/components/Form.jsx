@@ -8,7 +8,7 @@ import { useForm, Controller } from 'react-hook-form';
 
 function Form() {
   // const [value, setValue] = useState()
-    const { register, handleSubmit, formState: { errors }, getValues, watch, reset, control} = useForm({mode: "onBlur",});
+    const { register, handleSubmit, formState: { errors }, getValues, setValue, watch, reset, control} = useForm({mode: "onBlur",});
     const onSubmit = data => {
       console.log(data)
       //pool.query()
@@ -300,10 +300,16 @@ function Form() {
       <select {...register("language_assistance", { required: true })}>
         <option value="Spanish">Spanish</option>
         <option value="French">French</option>
-        <option value="Other">Other</option>
+        <option value="Other">Other (Specify below)</option>
         <option value="none">No assistance needed</option>
         <option value="unsure">Unsure</option>
       </select>
+      {watch("language_assistance") === 'Other' && (
+        <div>
+          <input type="text" placeholder="Specify language" {...register("language_assistance", {required: true, maxLength: 100})} /><br />
+        </div>
+      )}
+
       <label>Any additional notes</label>
       <input type="text" placeholder="Additional notes" {...register("additional_notes", {required: true, maxLength: 100})} />
 
@@ -322,7 +328,15 @@ function Form() {
         <option value="Michel Daley">Michel Daley</option>
         <option value="Other">Other</option>
       </select>
-      {/* <input type="text" placeholder="Referrer " {...register("referrer", {required: true, maxLength: 100})} /><br /> */}
+
+      {/* {watch("referrer") === 'Other' && (
+        <div>
+          <label>Specify below</label>
+          <input type="text" placeholder="Referrer " {...register("referrer", {required: true, maxLength: 100})} /><br />
+        </div>
+      )} */}
+
+      
       {errors.referrer && <p class="error">Please check the field above</p>}
       <br />
       <input type="submit" class="submit-button"  />

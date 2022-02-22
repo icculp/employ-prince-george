@@ -300,15 +300,15 @@ function Form() {
       <select {...register("language_assistance", { required: true })}>
         <option value="Spanish">Spanish</option>
         <option value="French">French</option>
-        <option value="Other">Other (Specify below)</option>
+        <option value="Other">Other</option>
         <option value="none">No assistance needed</option>
         <option value="unsure">Unsure</option>
       </select>
-      {watch("language_assistance") === 'Other' && (
+      {/* {watch("language_assistance") === 'Other' && (
         <div>
           <input type="text" placeholder="Specify language" {...register("language_assistance", {required: true, maxLength: 100})} /><br />
         </div>
-      )}
+      )} */}
 
       <label>Any additional notes</label>
       <input type="text" placeholder="Additional notes" {...register("additional_notes", {required: true, maxLength: 100})} />

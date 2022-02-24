@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm, Controller } from 'react-hook-form';
+import CustomDropDown from "./dropdown";
 // import PhoneInput, { formatPhoneNumber, formatPhoneNumberIntl, isValidPhoneNumber } from 'react-phone-number-input'
 // import PhoneInput from 'react-phone-input-2';
 // import "react-phone-number-input/style.css";
@@ -78,16 +79,6 @@ function Form() {
     return (
       <form onSubmit={handleSubmit(onSubmit)}>
         <p>ALL FIELDS REQUIRE AN ENTRY.  Place "NA" in unknown fields.</p> <br />
-        {/* <PhoneInput inputRef={register("phoneinput")}  />
-      
-        {errors.phoneinput && (
-          <p className="error-message">Invalid Phone</p>
-        )} */}
-   
-        {/* <input type="tel" placeholder="Mobile number" {...register("Mobile", {required: true, pattern: /(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/, maxLength: 12})} /> */}
-
-        {/* {errors.Mobile && <p class="error">Please check the field above</p>} */}
-
 
         <h2>Business Information</h2>
         <label>Business Name</label>
@@ -150,7 +141,7 @@ function Form() {
           <input {...register("mwe_registration", { required: true })} type="radio" value="yes" /> Yes <br/>
           <input {...register("mwe_registration", { required: true })} type="radio" value="no" /> No <br/>
           <input {...register("mwe_registration", { required: true })} type="radio" value="unknown" /> Unknown
-          {errors.mwe_registered && <p class="error">Please check the field above</p>}
+          {errors.mwe_registration && <p class="error">Please check the field above</p>}
           <br /><br />
           
           <label>Maryland Specific Employment Industry Sector Code (See code list.  If unsure, select "unknown")</label>
@@ -182,15 +173,6 @@ function Form() {
       {errors.poc_email && <p class="error">Email must be formatted like email@domain.com</p>}
       <label>Phone Number</label>  
       <input type="text" placeholder="10 digits, will accept (), -, spaces or digits. ie (123) 245-2838" {...register("poc_phone", {required: true, pattern: /^\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/, minLength: 10, maxLength: 18})} /><br/>
-      {/* <PhoneInput
-        name="phoneInput"
-        control={control}
-        rules={{ required: true }} />
-
-
-        {errors["phone-input"] && (
-          <p className="error-message">Invalid Phone</p>
-        )} */}
 
       {errors.poc_phone && <p class="error">Please check the field above</p>}
 
@@ -291,9 +273,8 @@ function Form() {
           
       
       </div>
-      {errors.hire_challenge && <p class="error">Please check the field above</p>}
+      {errors.Services && <p class="error">Please check the field above</p>}
       
-
 
       <br /><br />
       <h2>Additional Notes</h2>
@@ -327,27 +308,28 @@ function Form() {
       <label>General Input Field for listing contact phone calls or meetings with employer</label>
       <div>
       <input type="textarea" placeholder="General input" {...register("general_input", {required: true, maxLength: 500})} />
-      {errors.general_input && <p style={{'color': 'red'}}>Please check the general input</p>}
+      {errors.general_input && <p class="error">Please check the general input</p>}
       </div>
 
       <label>Person who referred you</label>  
-      <select {...register("referrer", { required: true, pattern: /^(?!--Select value--).*$/ })}>
+      <select {...register("referrer", { required: true, pattern: /^(?!--Select value--).*$/    })}>
         <option value="--Select value--">--Select value--</option>
         <option value="Miranda Braatz">Miranda Braatz</option>
         <option value="Tony Cord">Tony Cord</option>
         <option value="Michel Daley">Michel Daley</option>
-        <option value="Other">Other</option>
-      </select>
-
-      {/* {watch("referrer") === 'Other' && (
+        <option value="Other" onChange={getValues("referrer") === 'Other' && (
         <div>
           <label>Specify below</label>
-          <input type="text" placeholder="Referrer " {...register("referrer", {required: true, maxLength: 100})} /><br />
+          <input type="text" placeholder="Referrer" {...register("referrer", {maxLength: 100})} /><br />
         </div>
-      )} */}
+      )}>Other</option>
+      </select>
+
+      {/* <CustomDropDown /> */}
 
       
       {errors.referrer && <p class="error">Please check the field above</p>}
+
       <br /><br /><br /><br /><br />
       <input type="submit" class="submit-button"  />
     </form>

@@ -324,13 +324,22 @@ function Form() {
         </div>
       )}>Other</option>
       </select>
-
-      {/* <CustomDropDown /> */}
-
-      
       {errors.referrer && <p class="error">Please check the field above</p>}
 
-      <br /><br /><br /><br /><br />
+      {/* <CustomDropDown /> */}
+      <label>Is this a strong lead?</label>
+      <input {...register("strong_lead", { required: true })} type="radio" value="yes" /> Yes <br/>
+      <input {...register("strong_lead", { required: true })} type="radio" value="no" /> No <br/>
+      <input {...register("strong_lead", { required: true })} type="radio" value="unsure" /> Unsure
+      {errors.strong_lead && <p class="error">Please check the field above</p>}
+       {watch("strong_lead") === 'yes' && (
+        <div>
+          <input type="text" placeholder="Notes" {...register("strong_lead_notes", {required: true, maxLength: 100})} /><br />
+          {errors.strong_lead_notes && <p class="error">Please check the field above</p>}
+        </div>
+      )}
+
+      <br /><br />
       <input type="submit" class="submit-button"  />
     </form>
     );

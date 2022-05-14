@@ -2,7 +2,7 @@
 
 ```
 python pip install -r requirements.txt
-streamlit run nft.py
+streamlit run dashboard.py
 ```
 
 Work in progress

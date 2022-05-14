@@ -97,7 +97,7 @@ function Form() {
       <input type="text" placeholder="Street" {...register("street", {required: true,  pattern: /^[a-zA-Z0-9, ]+$/, maxLength: 20})} />
       {errors.street && <p class="error">Please check the field above</p>}
       <label>Suite</label>
-      <input type="text" placeholder="Suite" {...register("suite", {required: true, maxLength: 10})} />
+      <input type="text" placeholder="Suite" {...register("suite", {required: false, maxLength: 10})} />
       {errors.suite && <p class="error">Please check the field above</p>}
       <label>City</label>
       <input type="text" placeholder="City" {...register("city", {required: true, pattern: /^[a-zA-Z ]+$/, minLength: 2, maxLength: 20})} />
